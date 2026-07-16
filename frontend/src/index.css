@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: radial-gradient(ellipse at top, #1B1D2B 0%, #12131C 55%);
+  min-height: 100vh;
+}
+
+::selection {
+  background: #F2B705;
+  color: #12131C;
+}
+
+*:focus-visible {
+  outline: 2px solid #4DD4AC;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
