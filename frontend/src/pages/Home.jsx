@@ -36,7 +36,7 @@ export default function Home() {
 
         <div className="flex justify-center">
           <div className="rounded-2xl border border-white/10 bg-surface p-8 shadow-glow">
-            <ScoreGauge score={78} />
+            <ScoreGauge score={82} />
             <p className="mt-4 text-center font-mono text-xs text-muted">sample analysis</p>
           </div>
         </div>
