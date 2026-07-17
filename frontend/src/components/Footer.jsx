@@ -27,7 +27,7 @@ export default function Footer() {
           </p>
           <div className="mt-5 flex gap-3">
             <a
-              href="https://www.linkedin.com/in/utkarsh-tripathi45/"
+              href="https://linkedin.com/in/your-profile"
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
@@ -36,7 +36,7 @@ export default function Footer() {
               in
             </a>
             <a
-              href="https://github.com/utkarshtripathi45"
+              href="https://github.com/your-username"
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub"
@@ -68,11 +68,11 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-3">
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gold/10 text-gold">☎</span>
-              <span className="text-ink">+91-7007664343</span>
+              <span className="text-ink">+91-XXXXXXXXXX</span>
             </li>
             <li className="flex items-center gap-3">
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gold/10 text-gold">📍</span>
-              <span className="text-ink">Noida, UP</span>
+              <span className="text-ink">Ghaziabad, UP</span>
             </li>
           </ul>
         </div>
@@ -82,10 +82,19 @@ export default function Footer() {
           <h3 className="font-mono text-xs uppercase tracking-widest text-teal">
             Developer profile
           </h3>
-          <p className="mt-4 font-display text-lg font-semibold">Utkarsh Tripathi</p>
-          <p className="text-sm text-muted">Full Stack Developer · Fresher</p>
+          <div className="mt-4 flex items-center gap-4">
+            <img
+              src="/developer-photo.jpg"
+              alt="Utkarsh Tripathi"
+              className="h-16 w-16 rounded-full border-2 border-gold/40 object-cover"
+            />
+            <div>
+              <p className="font-display text-lg font-semibold leading-tight">Utkarsh Tripathi</p>
+              <p className="text-sm text-muted">Full Stack Developer · Fresher</p>
+            </div>
+          </div>
           <a
-            href="https://github.com/utkarshtripathi45"
+            href="https://github.com/your-username"
             target="_blank"
             rel="noreferrer"
             className="mt-6 inline-flex items-center gap-1 font-mono text-xs uppercase tracking-widest text-gold hover:underline"
@@ -99,7 +108,7 @@ export default function Footer() {
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} Prepped. Built with precision for the future.</p>
           <span className="inline-flex items-center gap-1 rounded-full border border-white/10 px-3 py-1">
-            made with <span className="text-danger">♥</span> by UTKARSH TRIPATHI
+            made with <span className="text-danger">♥</span> by Utkarsh Tripathi
           </span>
         </div>
       </div>
