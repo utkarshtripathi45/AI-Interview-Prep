@@ -61,7 +61,7 @@ exports.submitAnswer = async (req, res) => {
       : null;
 
     if (!evaluation) {
-      // Rule-based fallback: score by answer length/specificity as a rough proxy.
+      // Rule-based fallback- score by answer length/specificity as a rough proxy.
       const words = (answer || "").trim().split(/\s+/).filter(Boolean).length;
       const score = Math.min(10, Math.max(1, Math.round(words / 12)));
       evaluation = {
