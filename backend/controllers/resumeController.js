@@ -1,5 +1,6 @@
 const Resume = require("../models/Resume");
 const { analyzeResume } = require("../utils/resumeAnalyzer");
+const pdfParse = require("pdf-parse");
 
 exports.analyze = async (req, res) => {
   try {
@@ -14,6 +15,46 @@ exports.analyze = async (req, res) => {
       user: req.userId,
       jobTitle: jobTitle || "Full Stack Developer",
       resumeText,
+      jobDescription: jobDescription || "",
+      ...result,
+    });
+
+    res.status(201).json({ resume: saved });
+  } catch (err) {
+    res.status(500).json({ message: "Analysis failed", error: err.message });
+  }
+};
+
+// Accepts a PDF file (multipart/form-data, field name "resumeFile"), extracts
+// its text with pdf-parse, then runs the same rule-based analysis as /analyze.
+exports.analyzeFromFile = async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: "No PDF file uploaded" });
+    }
+
+    const { jobDescription, jobTitle } = req.body;
+
+    let extractedText = "";
+    try {
+      const parsed = await pdfParse(req.file.buffer);
+      extractedText = parsed.text || "";
+    } catch (parseErr) {
+      return res.status(400).json({ message: "Could not read PDF — is it a valid, non-scanned PDF?" });
+    }
+
+    if (extractedText.trim().length < 30) {
+      return res.status(400).json({
+        message: "Couldn't extract enough text from this PDF. It may be a scanned image — try pasting the text instead.",
+      });
+    }
+
+    const result = analyzeResume({ resumeText: extractedText, jobDescription });
+
+    const saved = await Resume.create({
+      user: req.userId,
+      jobTitle: jobTitle || "Full Stack Developer",
+      resumeText: extractedText,
       jobDescription: jobDescription || "",
       ...result,
     });
